@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-us" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Servicioss Ciudadanos</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="../css/materialize.css" type="text/css" rel="stylesheet"
+	media="screen,projection" />
+<link href="../css/style.css" type="text/css" rel="stylesheet"
+	media="screen,projection" />
+</head>
+
+<body>
+	<div class="row">
+		<div class="container">
+			<div class="col s12">
+				<label for="id">Id:</label> <input type="text" id="id" />
+			</div>
+
+
+			<div class="col s12">
+				<button class="waves-effect waves-light btn col s12" id="boton">Consultar</button>
+			</div>
+
+			<!-- 		<div class="col s12"> -->
+			<!-- 			<button class="btn waves-effect waves-light red lighten-2 s12" id="botonlimpiar">Limpiar Tabla</button> -->
+			<!-- 		</div> -->
+
+
+			<div id="tablelist">
+
+				<table id="condiciones" class="table table-bordered ">
+					<thead>
+						<tr>
+							<th>CUI</th>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+							<th>Nacionalidad</th>
+							<th>Sexo</th>
+							<th>Opciones</th>
+						</tr>
+					</thead>
+					<tbody>
+
+					</tbody>
+				</table>
+
+
+
+			</div>
+
+		</div>
+	</div>
+
+
+</body>
+</html>
+
+
+
+<script>
+	$(document).ready(function() {
+
+		listar();
+		$("#boton").click(function() {
+			$("#tablelist tbody").empty();
+			var url = $('#id').val();
+			console.log(url);
+
+			$.ajax({
+				url : '/ciudadano/consulta/' + url,
+				type : 'GET',
+				success : function(data) {
+					//called when successful
+
+					console.log(data);
+					var content = "<tr>";
+
+					$.each(data, function(key, value) {
+
+						for ( var a in value) {
+							content += '<td>' + value[a] + '</td>';
+						}
+
+					});
+
+
+					
+					content += "</tr>"
+						$('#tablelist tbody').append(content);
+
+
+				},
+				error : function(e) {
+
+				}
+			});
+
+		});
+
+
+
+	});
+
+	function edittablerow() {
+		$("#telefonos .edit").click(function() {
+			$(this).parents("tr:lt(2)").each(function() {
+
+				var name = $(this).find("td").eq(0).html();
+				var tel = $(this).find("td").eq(1).html();
+				$('#tel').val(tel);
+				$('#telname').val(name);
+
+			});
+
+			$(this).parents("tr:first")[0].remove();
+		});
+	};
+
+	function deletetablerow() {
+		$("#telefonos .delete").click(function() {
+			$(this).parents("tr:first")[0].remove();
+		});
+	};
+
+	function listar() {
+		$("#tablelist tbody").empty();
+
+		var url = $('#id').val();
+		console.log(url);
+
+		$.ajax({
+			url : '/ciudadano/listar/',
+			type : 'GET',
+			success : function(data) {
+				//called when successful
+
+				var content ;
+				for ( var i in data) {
+
+					content += '<tr id="'+data[i].id+'">' ;
+					$.each(data[i], function(key, value) {
+
+						
+
+						for ( var a in value) {
+							content += '<td>' + value[a] + '</td>';
+						}
+					});
+
+					content +='<input type="button" id="field"/>';
+					
+					content += '</tr>';
+				
+
+				}
+				console.log(content);	
+				$('#tablelist tbody').append(content);
+
+			},
+			error : function(e) {
+
+			}
+		});
+	};
+</script>

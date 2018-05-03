@@ -1,0 +1,11 @@
+umg\software\service\CollectionServiceImpl.class
+umg\software\entity\Ciudadano.class
+umg\software\repository\CollectionRepository.class
+umg\software\controller\CiudadanoController.class
+umg\software\utils\ResponseData.class
+umg\software\service\CollectionService.class
+umg\software\repository\CollectionRepositoryImpl.class
+umg\software\controller\CiudadanoViewController.class
+umg\software\utils\Constants.class
+umg\software\Application.class
+umg\software\repositoryImpl\CollectionRepositoryCustom.class

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  	     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+  	          <script src="../static/js/jquery.table.hpaging.js" th:src="@{/js/jquery.table.hpaging.js}"></script>
+  	 <script src="../static/js/libs/FileSaver/FileSaver.min.js" th:src="@{/js/libs/FileSaver/FileSaver.min.js}"></script>
+  	 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+  	 <script src="../static/js/jquery.table.hpaging.js" th:src="@{/js/jquery.table.hpaging.js}"></script>
+  	 <script src="../static/js/jquery.table.hpaging.min.js" th:src="@{/js/jquery.table.hpaging.min.js}"></script>
+     <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+<!--      <link href="../static/css/materialize.min.css" th:href="@{/css/materialize.min.css}" rel="stylesheet" media="screen"/> -->
+     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+</head>
+<body> 
+<div class="container">
+    <div th:fragment="header">
+		  <div class="example3">
+		  <nav class="navbar navbar-inverse navbar-static-top">
+		    <div class="container">
+		      <div class="navbar-header">
+		       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+        	   <span class="icon-bar"></span>
+        	   <span class="icon-bar"></span>
+        	   <span class="icon-bar"></span>
+        	   <span class="sr-only">Toggle navigation</span>
+      			</button>
+		        <a class="navbar-brand"><img class="brand-logo2" id="logo" src="../img/czs.png""/>
+		        </a>
+		      </div>
+		      <div id="navigation" class="collapse navbar-collapse">
+		        <ul class="nav navbar-nav navbar-right">
+		          <li class="mimenu"><a href="#" th:href="@{/}">Home</i>
+</a></li>
+
+
+		        </ul>
+		      </div>
+		    </div>
+		  </nav>
+		</div>
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+    $('#navbar3 li').click(function(){
+        $('#banks li').removeClass('active1');
+        $('#buttons li').removeClass('active2');
+        $(this).addClass('active1');
+        $(this).addClass('active2');
+    });    
+});
+</script>
+
+
+
+</body>
+</html>
